@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Sprint · TBT Quant Desk</title>
+  <meta name="description" content="Paper-trading sprint: $1,000 to $2,000 in 30 days, swing trading crypto with Kraken fees." />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="desk-vault" content="1" />
+  <meta name="theme-color" content="#050b16" />
+  <link rel="preload" href="satoshi-900.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="sprint.css?v=8" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2300cc00'/%3E%3Cpath d='M5 24l8-13 4 6 3-4 7 11z' fill='%2307111f'/%3E%3C/svg%3E" />
+</head>
+<body class="sprint">
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="sprint.html" aria-label="The Sprint, live view">
+        <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M2 20l7.5-12 3.6 5.4L16 9.5 22 20z" fill="#04210f"/></svg></span><span id="brand-name">The Sprint</span>
+      </a>
+      <nav class="desks" id="desks" aria-label="Desks"><a data-desk="sprint" href="sprint.html">Sprint</a><a data-desk="breakout" href="?desk=breakout">A · Breakout</a><a data-desk="tbo" href="?desk=tbo">B · TBO</a></nav>
+      <span class="pill" title="No real money. Live prices, simulated orders with Kraken's fees.">Paper trading</span>
+      <div class="status" id="status"><span class="live-dot stale"></span><span>Loading…</span></div>
+      <nav class="tabs" aria-label="Views">
+        <button id="nav-live" aria-selected="true">Live</button>
+        <button id="nav-replay" aria-selected="false">Replay a past month</button>
+        <a class="navlink" href="./">Full desk →</a>
+      </nav>
+    </div>
+  </header>
+  <div class="tape" id="tape" hidden>
+    <div class="mood" id="mood"></div>
+    <div class="tape-view" id="tape-view" aria-label="Live prices of the coins this desk follows, with each coin's move over the last 24 hours"><div class="tape-track" id="tape-track"></div></div>
+  </div>
+
+  <main>
+    <section class="hero" id="hero" aria-label="The goal">
+      <div class="scene" id="scene"></div>
+      <div class="wrap hero-in"><div class="hero-copy" id="copy"></div></div>
+    </section>
+
+    <div class="wrap page">
+      <section class="hud" id="hud" aria-label="Where things stand"></section>
+      <p class="scene-key" id="scene-key"></p>
+      <section class="ab" id="ab" aria-label="The A/B test" hidden></section>
+
+      <section class="block" id="race-block">
+        <div class="block-head">
+          <div><div class="eyebrow">The route so far</div><h2 id="race-h">The race to $2,000</h2></div>
+          <div class="legend" id="race-legend"></div>
+        </div>
+        <div class="panel race"><div class="race-box"><svg id="race" role="img" aria-label="Account value over the 30 days, against the pace needed to reach $2,000 and against simply holding Bitcoin"></svg><div class="tip" id="race-tip"></div></div><p class="race-note" id="race-note" hidden></p></div>
+      </section>
+
+      <section class="block" id="trades-block">
+        <div class="block-head">
+          <div><div class="eyebrow">On the rope</div><h2>Open trades and the market light</h2></div>
+          <p id="trades-sub"></p>
+        </div>
+        <div class="trades" id="trades"></div>
+      </section>
+
+      <section class="block" id="radar-block">
+        <div class="block-head">
+          <div><div class="eyebrow">Scouting</div><h2>Radar: what it might buy next</h2></div>
+          <p id="radar-sub">The closer a coin is to the centre, the closer it is to a breakout. Tap a coin to see its chart.</p>
+        </div>
+        <div class="radar">
+          <div class="panel scope-panel"><div id="scope"></div><div class="scope-key" id="scope-key"></div></div>
+          <div class="panel radar-list" id="radar"></div>
+          <div class="panel radar-detail" id="radar-detail"></div>
+        </div>
+      </section>
+
+      <section class="block two" id="log-block">
+        <div>
+          <div class="block-head"><div><div class="eyebrow">Logbook</div><h2>What it did, in plain English</h2></div></div>
+          <div class="panel pad"><ul class="feed" id="feed"></ul></div>
+        </div>
+        <div>
+          <div class="block-head"><div><div class="eyebrow">Results</div><h2>Finished trades</h2></div><p id="ledger-sub"></p></div>
+          <div class="panel pad"><div id="ledger"></div><div id="fees"></div></div>
+        </div>
+      </section>
+
+      <section class="block" id="score-block">
+        <div class="block-head">
+          <div><div class="eyebrow">Scoreboard</div><h2 id="score-h">Finished sprints</h2></div>
+          <p id="score-sub">On day 30 it sells everything, records the result here and starts again from $1,000.</p>
+        </div>
+        <div id="score"></div>
+      </section>
+
+      <section class="block" id="odds-block">
+        <div class="block-head">
+          <div><div class="eyebrow">The honest odds</div><h2 id="odds-h">How past runs ended</h2></div>
+          <p id="odds-sub"></p>
+        </div>
+        <div class="panel pad odds" id="odds"></div>
+      </section>
+
+      <section class="block" id="rules-block">
+        <div class="block-head"><div><div class="eyebrow">The method</div><h2>The rules it follows</h2></div></div>
+        <ol class="rules" id="rules"></ol>
+      </section>
+
+      <p class="foot">Paper trading only: no real money and no exchange account. Prices are live Binance spot prices; every simulated order pays Kraken Pro's taker fee (0.80% at the entry tier, lower with volume) plus 0.10% slippage. Backtests and paper results are not a guarantee of future results, and this is not financial advice. Crypto is volatile; you can lose money. The sky over the mountain follows Montreal's real sun and weather (<a href="https://open-meteo.com/" rel="noopener">weather data by Open-Meteo.com</a>); it says nothing about the market.</p>
+    </div>
+  </main>
+
+  <div class="dock" id="replay" hidden>
+    <div class="dock-pick" id="replay-pick" role="group" aria-label="Which month to replay"></div>
+    <button class="dock-play" id="play" aria-label="Play or pause">▶</button>
+    <input type="range" id="scrub" min="0" max="29" value="0" aria-label="Day of the replay" />
+    <div class="dock-day" id="replay-day"></div>
+  </div>
+  <div class="tip float" id="tip" role="status"></div>
+  <script src="sprint.js?v=8" type="module"></script>
+</body>
+</html>
