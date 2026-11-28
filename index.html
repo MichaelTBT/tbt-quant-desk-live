@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TBT Quant Desk</title>
+  <meta name="description" content="Paper-trading crypto desk: live positions, watchlist, learning and research." />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="desk-vault" content="1" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2300cc00'/%3E%3Cpath d='M7 21l6-6 4 4 8-9' stroke='%2307111f' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <div class="brand"><span class="mark" aria-hidden="true">▲</span>TBT Quant Desk</div>
+      <span class="pill paper" title="No real money. Live prices, simulated orders with real fees.">Paper trading</span>
+      <div class="status" id="status"><span class="live-dot stale"></span><span>Loading…</span></div>
+      <nav class="tabs" role="tablist" aria-label="Views">
+        <button role="tab" aria-selected="true" data-tab="desk">Desk</button>
+        <button role="tab" aria-selected="false" data-tab="learning">Learning</button>
+        <button role="tab" aria-selected="false" data-tab="research">Research</button>
+        <button role="tab" aria-selected="false" data-tab="rules">Rules</button>
+        <a class="navlink" href="sprint.html">Sprint →</a>
+        <a class="navlink" href="sprint.html?desk=breakout">A/B test →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="view-desk" role="tabpanel">
+      <div class="hero" id="hero"></div>
+      <div class="panel chart-panel">
+        <div class="chart-head">
+          <h2>Account value</h2>
+          <div class="legend" id="legend"></div>
+          <div class="seg" id="range" role="group" aria-label="Chart range">
+            <button data-r="7D" aria-pressed="false">7D</button><button data-r="30D" aria-pressed="true">30D</button><button data-r="ALL" aria-pressed="false">All</button>
+          </div>
+        </div>
+        <div style="position:relative"><svg class="chart" id="chart" role="img" aria-label="Account value chart"></svg><div class="chart-tip" id="tip"></div></div>
+      </div>
+
+      <div class="section-head"><h2>Trade board</h2><p id="board-sub">Every coin and trade, from watching to closed.</p></div>
+      <div class="board" id="board"></div>
+
+      <div class="lower">
+        <div class="panel"><div class="chart-head"><h2>What the desk did</h2><span class="muted small">Plain-English log, newest first</span></div><ul class="log" id="log"></ul></div>
+        <div class="panel"><div class="chart-head"><h2>Learning at a glance</h2><button class="seg" style="margin-left:auto;padding:5px 12px;cursor:pointer;border-radius:9px" data-goto="learning">Open learning →</button></div><div id="peek"></div></div>
+      </div>
+    </section>
+
+    <section id="view-learning" role="tabpanel" hidden></section>
+    <section id="view-research" role="tabpanel" hidden></section>
+    <section id="view-rules" role="tabpanel" hidden></section>
+
+    <p class="foot">Paper trading only: live Binance prices, simulated orders with fees (0.10%) and slippage (0.05%) on every fill. Backtests and paper results are not a guarantee of future results, and this is not financial advice. Crypto is volatile; you can lose money.</p>
+  </main>
+  <script src="app.js" type="module"></script>
+</body>
+</html>
